@@ -13,9 +13,7 @@ use Justmd5\Crypto\Rsa\PrivateKey;
 use Justmd5\Crypto\Rsa\PublicKey;
 
 // generating an RSA key pair
- $generate   = (new KeyPair())->generate();
- $privateKey = $generate[0];
- $publicKey  = $generate[1];
+list($privateKey,$publicKey)   = (new KeyPair())->generate();
 
 // when passing paths, the generated keys will be written those paths
 (new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey);
@@ -46,9 +44,7 @@ You can generate a key pair using the `generate` function on the `KeyPair` class
 ```php
 use Justmd5\Crypto\Rsa\KeyPair;
 
- $generate   = (new KeyPair())->generate();
- $privateKey = $generate[0];
- $publicKey  = $generate[1];
+ list($privateKey,$publicKey)   = (new KeyPair())->generate();
 ```
 
 You can write the keys to disk, by passing paths to the `generate` function. 
@@ -62,9 +58,7 @@ You can protect the private key with a password by using the `password` method:
 
 ```php
  $generate = (new KeyPair())->password('my-password')->generate();
- $generate   = (new KeyPair())->generate();
- $passwordProtectedPrivateKey = $generate[0];
- $publicKey  = $generate[1];
+list(passwordProtectedPrivateKey,$publicKey)   = (new KeyPair())->generate();
 ```
 
 When using a password to generating a private key, you will need that password when instantiating the `PrivateKey` class.
